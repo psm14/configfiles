@@ -40,6 +40,10 @@
 
     # Using oh-my-zsh for theming instead
     promptInit = "";
+
+    shellInit = ''
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+    '';
   };
 
   homebrew = {

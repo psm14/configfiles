@@ -42,10 +42,6 @@
         export DIRENV_LOG_FORMAT=
         export EDITOR=nvim
       '';
-
-      initExtraBeforeCompInit = if !isDarwin then "" else ''
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-      '';
     };
 
     programs.direnv = {
