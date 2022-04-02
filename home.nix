@@ -1,4 +1,4 @@
-{ isDarwin }: { pkgs, ... }: {
+{ pkgs, ... }: {
     # This value determines the Home Manager release that your
     # configuration is compatible with. This helps avoid breakage
     # when a new Home Manager release introduces backwards
@@ -35,7 +35,7 @@
       oh-my-zsh = {
         enable = true;
         plugins = [ "git" ];
-         theme = "gallois";
+        theme = "gallois";
       };
 
       initExtra = ''

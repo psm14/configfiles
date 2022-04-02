@@ -41,7 +41,7 @@
     # Using oh-my-zsh for theming instead
     promptInit = "";
 
-    shellInit = ''
+    loginShellInit = ''
       eval "$(/opt/homebrew/bin/brew shellenv)"
     '';
   };
@@ -59,7 +59,7 @@
     name = "pat";
     home = "/Users/pat";
   };
-  home-manager.users.pat = import ./home.nix { isDarwin = true; };
+  home-manager.users.pat = import ./home.nix;
 
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
