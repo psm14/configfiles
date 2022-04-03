@@ -19,6 +19,8 @@
       gitAndTools.delta
       neovim
       helix
+      ripgrep
+      tmux
     ];
 
     programs.zsh = {
