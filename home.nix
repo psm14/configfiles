@@ -21,6 +21,7 @@
       helix
       ripgrep
       tmux
+      most
     ];
 
     programs.zsh = {
@@ -43,6 +44,7 @@
       initExtra = ''
         export DIRENV_LOG_FORMAT=
         export EDITOR=nvim
+	export PAGER=most
       '';
     };
 
