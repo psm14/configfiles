@@ -51,6 +51,10 @@
     autoUpdate = true;
     cleanup = "zap";
 
+    brews = [
+      "openjdk@11"
+    ];
+
     taps = [];
     casks = [];
   };
