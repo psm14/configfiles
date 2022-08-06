@@ -6,7 +6,7 @@
     "redhat.telemetry.enabled" = false;
     "workbench.colorTheme" = "Gruvbox Dark Hard";
     "workbench.preferredDarkColorTheme" = "Gruvbox Dark Hard";
-    "workbench.preferredLightColorTheme" = "Gruvbox Light Hard";
+    "workbench.preferredLightColorTheme" = "Gruvbox Light Medium";
     "window.autoDetectColorScheme" = true;
     "workbench.fontAliasing" = "auto";
     "editor.defaultFormatter" = "esbenp.prettier-vscode";
@@ -35,7 +35,7 @@
       "editor.defaultFormatter" = "jnoortheen.nix-ide";
     };
     "editor.tabSize" = 2;
-    "editor.fontFamily" = "Input, Menlo, Monaco, 'Courier New', monospace";
+    "editor.fontFamily" = "Hack, Menlo, Monaco, 'Courier New', monospace";
     "liveshare.showInStatusBar" = "whileCollaborating";
     "editor.acceptSuggestionOnCommitCharacter" = false;
     "terminal.external.osxExec" = "iTerm.app";

@@ -7,7 +7,9 @@ let
 in {
   imports = [ <home-manager/nix-darwin> ];
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -44,6 +46,13 @@ in {
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToControl = true;
 
+  fonts = {
+    fontDir.enable = true;
+    fonts = [
+      pkgs.hack-font
+    ];
+  };
+
   programs.zsh = {
     enable = true;
 
@@ -67,11 +76,12 @@ in {
     taps = [
       "homebrew/bundle"
       "homebrew/cask"
+      "homebrew/cask-versions"
       "homebrew/core"
     ];
     casks = [
       "visual-studio-code"
-      "iterm2"
+      "iterm2-beta"
     ];
   };
 
