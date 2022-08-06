@@ -1,21 +1,4 @@
-{ lib, pkgs, ... }:
-let
-  inherit (pkgs) stdenv;
-  # Fake derivation that symlinks to the homebrew vscode
-  vscode = stdenv.mkDerivation {
-    name = "vscode-brew";
-    pname = "vscode";
-
-    phases = [ "installPhase" ];
-
-    installPhase = ''
-      mkdir -p $out/bin
-      cd $out/bin
-      ln -s /opt/homebrew/bin/code
-    '';
-  };
-in
-{
+{ lib, pkgs, ... }: {
   nixpkgs.config = {
     allowUnfree = true;
   };
@@ -24,7 +7,6 @@ in
     systemPackages = [
       pkgs.colima
       pkgs.docker
-      vscode
     ];
 
     shells = [ pkgs.zsh ];

@@ -20,10 +20,14 @@
     darwinConfigurations = {
       "PatBook-Air" = let
         system = "aarch64-darwin";
+        pkgs = import nixpkgs { inherit system; };
+        vscode = import ./vscode/vscode-brew.nix { inherit pkgs; };
       in darwin.lib.darwinSystem {
         inherit system;
+        inputs = { inherit vscode; };
         modules = [
           ./configuration.nix
+          ./vscode/default.nix
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
