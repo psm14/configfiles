@@ -16,6 +16,21 @@
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, ... }: {
+    homeConfigurations = {
+      generic = home-manager.lib.homeManagerConfiguration {
+        system = "x86_64-linux";
+        homeDirectory = "/home/user";
+        username = "user";
+
+        modules = [
+          ./shellConfig.nix
+          {
+            programs.home-manager.enable = true;
+          }
+        ];
+      };
+    };
+
     darwinConfigurations = {
       "PatBook-Air" =
         darwin.lib.darwinSystem {
