@@ -21,10 +21,8 @@
       "PatBook-Air" = let
         system = "aarch64-darwin";
         pkgs = import nixpkgs { inherit system; };
-        vscode = import ./vscode/vscode-brew.nix { inherit pkgs; };
       in darwin.lib.darwinSystem {
         inherit system;
-        inputs = { inherit vscode; };
         modules = [
           ./configuration.nix
           ./vscode/default.nix
@@ -32,9 +30,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.pat = import ./home.nix {
-              pkgs = import nixpkgs { inherit system; };
-            };
+            home-manager.users.pat = import ./home.nix { inherit pkgs; };
 
             users.users.patrickmclaughlin = {
               name = "pat";
