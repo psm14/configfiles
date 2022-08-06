@@ -18,13 +18,13 @@
   outputs = { self, nixpkgs, home-manager, darwin, ... }: {
     homeConfigurations = {
       generic = home-manager.lib.homeManagerConfiguration {
-        system = "x86_64-linux";
-        homeDirectory = "/home/user";
-        username = "user";
+        pkgs = import nixpkgs { system = "x86_64-linux"; };
 
         modules = [
           ./shellConfig.nix
           {
+            home.username = "user";
+            home.homeDirectory = "/home/user";
             programs.home-manager.enable = true;
           }
         ];
