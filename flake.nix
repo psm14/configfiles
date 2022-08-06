@@ -6,8 +6,7 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
     darwin = {
-      # Fork with mouse scaling
-      url = "github:psm14/nix-darwin/mouse-scaling";
+      url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {

@@ -1,4 +1,9 @@
 { lib, pkgs, ... }: {
+  imports = [
+    # For the mouse scaling setting
+    ./darwinExtensions.nix
+  ];
+
   config = {
     nixpkgs.config = {
       allowUnfree = true;
@@ -41,7 +46,6 @@
     system.defaults.NSGlobalDomain.NSAutomaticQuoteSubstitutionEnabled = false;
     system.defaults.NSGlobalDomain.NSAutomaticSpellingCorrectionEnabled = false;
 
-    # TODO: Add support for this
     system.defaults.".GlobalPreferences"."com.apple.mouse.scaling" = "-1.0";
 
     system.defaults.dock.autohide = true;
