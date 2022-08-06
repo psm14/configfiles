@@ -1,7 +1,9 @@
-{ pkgs, vscode ? false }:
+{ pkgs, vscode ? null }:
 let
-  bat-theme = if pkgs.stdenv.isDarwin then "\$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo gruvbox-dark || echo gruvbox-light)" else "gruvbox-dark";
-in {
+  inherit (pkgs) stdenv;
+  bat-theme = if stdenv.isDarwin then "\$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo gruvbox-dark || echo gruvbox-light)" else "gruvbox-dark";
+in
+{
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
@@ -57,5 +59,8 @@ in {
     nix-direnv.enable = true;
   };
 
-  programs.vscode = if vscode == true then import ./vscode/default.nix { inherit (pkgs) rnix-lsp nixpkgs-fmt; } else { };
+  programs.vscode = import ./vscode/default.nix {
+    inherit (pkgs) rnix-lsp nixpkgs-fmt;
+    inherit vscode;
+  };
 }

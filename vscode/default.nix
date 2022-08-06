@@ -1,5 +1,7 @@
-{ rnix-lsp, nixpkgs-fmt }: {
+{ rnix-lsp, nixpkgs-fmt, vscode ? null }: if vscode == null then {} else {
   enable = true;
+
+  package = vscode;
 
   userSettings = {
     "telemetry.telemetryLevel" = "off";

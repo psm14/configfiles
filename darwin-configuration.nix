@@ -1,22 +1,41 @@
 { lib, pkgs, ... }:
 let
-  home = import ./home.nix {
-    inherit pkgs;
-    vscode = true;
+  inherit (pkgs) stdenv;
+  # Fake derivation that symlinks to the homebrew vscode
+  vscode = stdenv.mkDerivation {
+    name = "vscode-brew";
+    pname = "vscode";
+
+    phases = [ "installPhase" ];
+
+    installPhase = ''
+      mkdir -p $out/bin
+      cd $out/bin
+      ln -s /opt/homebrew/bin/code
+    '';
   };
-in {
+in
+{
   imports = [ <home-manager/nix-darwin> ];
 
   nixpkgs.config = {
     allowUnfree = true;
   };
 
-  # List packages installed in system profile. To search by name, run:
-  # $ nix-env -qaP | grep wget
-  environment.systemPackages = [
-    pkgs.colima
-    pkgs.docker
-  ];
+  environment = {
+    systemPackages = [
+      pkgs.colima
+      pkgs.docker
+    ];
+
+    shells = [ pkgs.zsh ];
+    loginShell = "${pkgs.zsh}/bin/zsh -l";
+
+    variables = {
+      SHELL = "${pkgs.zsh}/bin/zsh";
+      LANG = "en_US.UTF-8";
+    };
+  };
 
   nix.package = pkgs.nixFlakes;
 
@@ -39,7 +58,7 @@ in {
   system.defaults.NSGlobalDomain.NSAutomaticPeriodSubstitutionEnabled = false;
   system.defaults.NSGlobalDomain.NSAutomaticQuoteSubstitutionEnabled = false;
   system.defaults.NSGlobalDomain.NSAutomaticSpellingCorrectionEnabled = false;
-  
+
   # TODO: Add support for this
   system.defaults.".GlobalPreferences"."com.apple.mouse.scaling" = "-1.0";
 
@@ -88,7 +107,9 @@ in {
     name = "pat";
     home = "/Users/pat";
   };
-  home-manager.users.pat = home;
+  home-manager.users.pat = import ./home.nix {
+    inherit pkgs vscode;
+  };
 
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
