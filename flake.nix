@@ -29,7 +29,11 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.pat = import ./home.nix;
+              home-manager.users.pat = {
+                imports = [
+                  ./shellConfig.nix
+                ];
+              };
 
               users.users.patrickmclaughlin = {
                 name = "pat";

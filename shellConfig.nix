@@ -14,10 +14,6 @@ in
   # changes in each release.
   home.stateVersion = "21.11";
 
-  # Let Home Manager install and manage itself.
-  # Commenting this out to see what happens
-  # programs.home-manager.enable = true;
-
   home.packages = with pkgs; [
     comma
     bat
