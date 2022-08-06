@@ -33,11 +33,6 @@
                   ./shellConfig.nix
                 ];
               };
-
-              users.users.patrickmclaughlin = {
-                name = "pat";
-                home = "/Users/pat";
-              };
             }
           ];
         };

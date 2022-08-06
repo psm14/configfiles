@@ -68,21 +68,6 @@
       promptInit = "";
     };
 
-    homebrew = {
-      enable = true;
-      autoUpdate = true;
-      cleanup = "zap";
-
-      brews = [
-        "openjdk@11"
-      ];
-
-      taps = [
-        "homebrew/bundle"
-        "homebrew/core"
-      ];
-    };
-
     # Use a custom configuration.nix location.
     # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
     # environment.darwinConfig = "$HOME/.config/nixpkgs/darwin/configuration.nix";
