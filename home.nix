@@ -1,4 +1,7 @@
-{ pkgs, vscode ? false }: {
+{ pkgs, vscode ? false }:
+let
+  bat-theme = if pkgs.stdenv.isDarwin then "\$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo gruvbox-dark || echo gruvbox-light)" else "gruvbox-dark";
+in {
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards
@@ -20,7 +23,6 @@
     neovim
     ripgrep
     tmux
-    most
   ];
 
   programs.zsh = {
@@ -31,7 +33,7 @@
     shellAliases = {
       vim = "nvim";
       ls = "ls --color=auto";
-      cat = "bat -pp";
+      cat = "bat --theme=${bat-theme} -pp";
     };
 
     oh-my-zsh = {
@@ -43,7 +45,9 @@
     initExtra = ''
       export DIRENV_LOG_FORMAT=
       export EDITOR=nvim
-      export PAGER=most
+      export PAGER=bat
+      export BAT_THEME=${bat-theme}
+      export BAT_STYLE=plain
     '';
   };
 
