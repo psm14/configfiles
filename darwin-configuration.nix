@@ -58,10 +58,6 @@ in {
 
     # Using oh-my-zsh for theming instead
     promptInit = "";
-
-    loginShellInit = ''
-      eval "$(/opt/homebrew/bin/brew shellenv)"
-    '';
   };
 
   homebrew = {
