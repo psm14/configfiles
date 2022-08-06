@@ -13,8 +13,11 @@ in {
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages = [];
-  
+  environment.systemPackages = [
+    pkgs.colima
+    pkgs.docker
+  ];
+
   nix.package = pkgs.nixFlakes;
 
   nix.useSandbox = true;
