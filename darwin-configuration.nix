@@ -1,15 +1,24 @@
 { lib, pkgs, ... }:
-
-{
+let
+  home = import ./home.nix {
+    inherit pkgs;
+    vscode = true;
+  };
+in {
   imports = [ <home-manager/nix-darwin> ];
+
+  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
-  environment.systemPackages = with pkgs; [
-      rustup
-    ];
+  environment.systemPackages = [];
   
-  nix.package = pkgs.nixFlakes; # NOTE: EXPERIMENTAL.
+  nix.package = pkgs.nixFlakes;
+
+  nix.useSandbox = true;
+  nix.sandboxPaths = [ "/private/tmp" "/private/var/tmp" "/usr/bin/env" ];
+
+  programs.nix-index.enable = true;
 
   nix.extraOptions = ''
     keep-derivations = true
@@ -55,15 +64,22 @@
       "openjdk@11"
     ];
 
-    taps = [];
-    casks = [];
+    taps = [
+      "homebrew/bundle"
+      "homebrew/cask"
+      "homebrew/core"
+    ];
+    casks = [
+      "visual-studio-code"
+      "iterm2"
+    ];
   };
 
   users.users.patrickmclaughlin = {
     name = "pat";
     home = "/Users/pat";
   };
-  home-manager.users.pat = import ./home.nix;
+  home-manager.users.pat = home;
 
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
