@@ -19,16 +19,13 @@
   outputs = { self, nixpkgs, home-manager, darwin, ... }: {
     darwinConfigurations = {
       "PatBook-Air" =
-        let
-          system = "aarch64-darwin";
-          pkgs = import nixpkgs { inherit system; };
-        in
         darwin.lib.darwinSystem {
-          inherit system;
+          system = "aarch64-darwin";
           modules = [
             home-manager.darwinModules.home-manager
             ./configuration.nix
             ./vscode.nix
+            ./iterm2.nix
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;

@@ -75,13 +75,7 @@
 
       taps = [
         "homebrew/bundle"
-        "homebrew/cask"
-        "homebrew/cask-versions"
         "homebrew/core"
-      ];
-
-      casks = [
-        "iterm2-beta"
       ];
     };
 
