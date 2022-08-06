@@ -49,7 +49,14 @@
     system.defaults.".GlobalPreferences"."com.apple.mouse.scaling" = "-1.0";
 
     system.defaults.dock.autohide = true;
+    system.defaults.dock.mru-spaces = false;
+    system.defaults.dock.wvous-tl-corner = 1; # Disabled
+    system.defaults.dock.wvous-tr-corner = 1;
+    system.defaults.dock.wvous-bl-corner = 1;
+    system.defaults.dock.wvous-br-corner = 1;
+    system.defaults.NSGlobalDomain._HIHideMenuBar = true;
     system.defaults.finder.AppleShowAllExtensions = true;
+    system.defaults.finder.CreateDesktop = false;
 
     system.keyboard.enableKeyMapping = true;
     system.keyboard.remapCapsLockToControl = true;
