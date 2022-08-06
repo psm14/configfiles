@@ -108,5 +108,6 @@
     "vs-kubernetes" = {
       "vs-kubernetes.crd-code-completion" = "disabled";
     };
+    "terminal.integrated.shellIntegration.decorationsEnabled" = "never";
   };
 }

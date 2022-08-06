@@ -674,7 +674,6 @@
     "Blue Component" : 1,
     "Red Component" : 1
   },
-  "Blur" : true,
   "Initial Use Transparency" : false,
   "Use Separate Colors for Light and Dark Mode" : true,
   "Background Color (Light)" : {
