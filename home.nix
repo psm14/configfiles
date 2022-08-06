@@ -1,4 +1,4 @@
-{ pkgs, vscode ? null }:
+{ pkgs }:
 let
   inherit (pkgs) stdenv;
   bat-theme = if stdenv.isDarwin then "\$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo gruvbox-dark || echo gruvbox-light)" else "gruvbox-dark";
@@ -15,7 +15,8 @@ in
   home.stateVersion = "21.11";
 
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  # Commenting this out to see what happens
+  # programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
     comma
@@ -57,10 +58,5 @@ in
     enable = true;
     enableZshIntegration = true;
     nix-direnv.enable = true;
-  };
-
-  programs.vscode = import ./vscode/default.nix {
-    inherit (pkgs) rnix-lsp nixpkgs-fmt;
-    inherit vscode;
   };
 }

@@ -16,8 +16,6 @@ let
   };
 in
 {
-  imports = [ <home-manager/nix-darwin> ];
-
   nixpkgs.config = {
     allowUnfree = true;
   };
@@ -26,6 +24,7 @@ in
     systemPackages = [
       pkgs.colima
       pkgs.docker
+      vscode
     ];
 
     shells = [ pkgs.zsh ];
@@ -102,17 +101,6 @@ in
       "iterm2-beta"
     ];
   };
-
-  users.users.patrickmclaughlin = {
-    name = "pat";
-    home = "/Users/pat";
-  };
-  home-manager.users.pat = import ./home.nix {
-    inherit pkgs vscode;
-  };
-
-  home-manager.useUserPackages = true;
-  home-manager.useGlobalPkgs = true;
 
   # Use a custom configuration.nix location.
   # $ darwin-rebuild switch -I darwin-config=$HOME/.config/nixpkgs/darwin/configuration.nix
