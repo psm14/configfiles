@@ -26,6 +26,9 @@
             home.username = "user";
             home.homeDirectory = "/home/user";
             programs.home-manager.enable = true;
+            programs.zsh.initExtra = ''
+              export NIX_PATH="nixpkgs=${nixpkgs}:$NIX_PATH"
+            '';
           }
         ];
       };
@@ -41,6 +44,9 @@
             ./vscode.nix
             ./iterm2.nix
             {
+              # Let old commands use the pinned nixpkgs
+              nix.nixPath = { nixpkgs = "${nixpkgs}"; };
+
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.pat = {
