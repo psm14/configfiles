@@ -16,29 +16,31 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, darwin, ... }: {
+  outputs = { self, nixpkgs, home-manager, darwin, ... }: {
     darwinConfigurations = {
-      "PatBook-Air" = let
-        system = "aarch64-darwin";
-        pkgs = import nixpkgs { inherit system; };
-      in darwin.lib.darwinSystem {
-        inherit system;
-        modules = [
-          ./configuration.nix
-          ./vscode/default.nix
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.pat = import ./home.nix { inherit pkgs; };
+      "PatBook-Air" =
+        let
+          system = "aarch64-darwin";
+          pkgs = import nixpkgs { inherit system; };
+        in
+        darwin.lib.darwinSystem {
+          inherit system;
+          modules = [
+            home-manager.darwinModules.home-manager
+            ./configuration.nix
+            ./vscode.nix
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.pat = import ./home.nix;
 
-            users.users.patrickmclaughlin = {
-              name = "pat";
-              home = "/Users/pat";
-            };
-          }
-        ];
-      };
+              users.users.patrickmclaughlin = {
+                name = "pat";
+                home = "/Users/pat";
+              };
+            }
+          ];
+        };
     };
   };
 }

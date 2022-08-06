@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, ... }:
 let
   inherit (pkgs) stdenv;
   bat-theme = if stdenv.isDarwin then "\$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo gruvbox-dark || echo gruvbox-light)" else "gruvbox-dark";
