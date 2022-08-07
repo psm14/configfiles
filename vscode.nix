@@ -143,11 +143,11 @@ let
     "terminal.integrated.shellIntegration.decorationsEnabled" = "never";
     "extensions.ignoreRecommendations" = true;
   };
-  settings-json = pkgs.writeTextFile {
-    name = "vscode-settings";
-    text = builtins.toJSON vscode-settings;
-    destination = "/share/settings.json";
-  };
+  settings-json = pkgs.runCommand "vscode-settings" {} ''
+    cat << EOF | ${pkgs.jq}/bin/jq . > $out
+    ${builtins.toJSON vscode-settings}
+    EOF
+  '';
   settings-dir =
     if pkgs.stdenv.hostPlatform.isDarwin then
       "$HOME/Library/Application Support/Code/User"
@@ -164,11 +164,11 @@ let
         lib.hm.dag.entryAfter [ "writeBoundary" ] install-cmd;
 
       home.activation.copy-settings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        cp -f "${settings-json}/share/settings.json" "${settings-dir}/settings.json"
+        cp -f "${settings-json}" "${settings-dir}/settings.json"
       '';
 
       programs.zsh.shellAliases = {
-        vscode-settings-diff = "${pkgs.delta}/bin/delta  \"${settings-json}/share/settings.json\" \"${settings-dir}/settings.json\"";
+        vscode-settings-diff = "${pkgs.delta}/bin/delta  \"${settings-json}\" \"${settings-dir}/settings.json\"";
       };
     };
   };
