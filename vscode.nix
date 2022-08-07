@@ -142,8 +142,9 @@ let
     };
     "terminal.integrated.shellIntegration.decorationsEnabled" = "never";
     "extensions.ignoreRecommendations" = true;
+    "workbench.statusBar.visible" = false;
   };
-  settings-json = pkgs.runCommand "vscode-settings" {} ''
+  settings-json = pkgs.runCommand "vscode-settings" { } ''
     cat << EOF | ${pkgs.jq}/bin/jq . > $out
     ${builtins.toJSON vscode-settings}
     EOF
