@@ -11,7 +11,8 @@ let
   home-module = { pkgs, lib, ... }: {
     config = {
       home.activation.config-iterm = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        $DRY_RUN_CMD cp -f ${iterm2-config} ~/Library/Preferences/com.googlecode.iterm2.plist
+        $DRY_RUN_CMD cp -f ${iterm2-config} $HOME/Library/Preferences/com.googlecode.iterm2.plist
+        $DRY_RUN_CMD chmod +w $HOME/Library/Preferences/com.googlecode.iterm2.plist
       '';
     };
   };

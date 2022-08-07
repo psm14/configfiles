@@ -31,14 +31,12 @@ let
     "styled-components.vscode-styled-components"
     "vadimcn.vscode-lldb"
     "vscodevim.vim"
+    "dlasagno.wal-theme"
   ];
   vscode-settings = {
     "telemetry.telemetryLevel" = "off";
     "redhat.telemetry.enabled" = false;
-    "workbench.colorTheme" = "Gruvbox Dark Hard";
-    "workbench.preferredDarkColorTheme" = "Gruvbox Dark Hard";
-    "workbench.preferredLightColorTheme" = "Gruvbox Light Medium";
-    "window.autoDetectColorScheme" = true;
+    "workbench.colorTheme" = "Wal Bordered";
     "workbench.fontAliasing" = "auto";
     "editor.defaultFormatter" = "esbenp.prettier-vscode";
     "terminal.integrated.cursorStyle" = "underline";

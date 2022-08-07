@@ -1,8 +1,9 @@
 { pkgs, ... }:
 let
   inherit (pkgs) stdenv;
-  bat-theme = if stdenv.isDarwin then "\$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo gruvbox-dark || echo gruvbox-light)" else "gruvbox-dark";
-  delta-theme = if stdenv.isDarwin then "\$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo --dark || --light)" else "--dark";
+  light-dark = light: dark: if stdenv.isDarwin then "\$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo ${dark} || ${light})" else dark;
+  bat-theme = light-dark "ansi-light" "ansi-dark";
+  delta-theme = light-dark "--light" "--dark";
   delta-cmd = "${pkgs.gitAndTools.delta}/bin/delta ${delta-theme}";
 in
 {

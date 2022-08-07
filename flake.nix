@@ -55,6 +55,7 @@
               home-manager.users.pat = {
                 imports = [
                   ./shellConfig.nix
+                  ./pywal.nix
                 ];
               };
             }
