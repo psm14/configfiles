@@ -29,8 +29,6 @@
     nix.useSandbox = true;
     nix.sandboxPaths = [ "/private/tmp" "/private/var/tmp" "/usr/bin/env" ];
 
-    programs.nix-index.enable = true;
-
     nix.extraOptions = ''
       keep-derivations = true
       keep-outputs = true

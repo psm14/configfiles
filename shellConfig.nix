@@ -55,4 +55,8 @@ in
     enableZshIntegration = true;
     nix-direnv.enable = true;
   };
+
+  programs.nix-index = {
+    enable = true;
+  };
 }
