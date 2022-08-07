@@ -45,7 +45,10 @@
             ./iterm2.nix
             {
               # Let old commands use the pinned nixpkgs
-              nix.nixPath = { nixpkgs = "${nixpkgs}"; };
+              nix.nixPath = {
+                nixpkgs = "${nixpkgs}";
+                darwin = "${darwin}";
+              };
 
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
