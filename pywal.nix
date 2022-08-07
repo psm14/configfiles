@@ -1,6 +1,8 @@
 { pkgs, ... }:
 let
-  inherit (pkgs) python3;
+  inherit (pkgs) python3 stdenv;
+  light-dark = light: dark: if stdenv.isDarwin then "\$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo ${dark} || ${light})" else dark;
+  bat-theme = light-dark "ansi-light" "ansi-dark";
   colorz = python3.pkgs.buildPythonPackage {
     inherit (pkgs.colorz) name version src propagatedBuildInputs meta;
   };
@@ -27,9 +29,19 @@ in
     pywal-mac-fix
   ];
 
+  programs.vscode-brew = {
+    settings = {
+      "workbench.colorTheme" = "Wal Bordered";
+    };
+    extensions = [
+      "dlasagno.wal-theme"
+    ];
+  };
+
   programs.zsh.initExtra = ''
     if [ "$TERM_PROGRAM" = "iTerm.app" ]; then
       cat /Users/pat/.cache/wal/sequences
     fi
+    export BAT_THEME=${bat-theme};
   '';
 }

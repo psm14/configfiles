@@ -41,7 +41,7 @@
           modules = [
             home-manager.darwinModules.home-manager
             ./configuration.nix
-            ./vscode.nix
+            ./vscode-brew.nix
             ./iterm2.nix
             {
               # Let old commands use the pinned nixpkgs
@@ -55,7 +55,8 @@
               home-manager.users.pat = {
                 imports = [
                   ./shellConfig.nix
-                  ./pywal.nix
+                  ./vscode.nix
+                  ./gruvbox.nix
                 ];
               };
             }

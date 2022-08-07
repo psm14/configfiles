@@ -2,7 +2,6 @@
 let
   inherit (pkgs) stdenv;
   light-dark = light: dark: if stdenv.isDarwin then "\$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo ${dark} || ${light})" else dark;
-  bat-theme = light-dark "ansi-light" "ansi-dark";
   delta-theme = light-dark "--light" "--dark";
   delta-cmd = "${pkgs.gitAndTools.delta}/bin/delta ${delta-theme}";
 in
@@ -35,7 +34,7 @@ in
     shellAliases = {
       vim = "nvim";
       ls = "ls --color=auto";
-      cat = "bat --theme=${bat-theme} -pp";
+      cat = "bat -pp";
     };
 
     oh-my-zsh = {
@@ -48,7 +47,6 @@ in
       export DIRENV_LOG_FORMAT=
       export EDITOR=nvim
       export PAGER=bat
-      export BAT_THEME=${bat-theme}
       export BAT_STYLE=plain
     '';
   };
