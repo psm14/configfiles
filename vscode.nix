@@ -134,6 +134,7 @@ let
     "editor.renderLineHighlight" = "gutter";
     "editor.cursorBlinking" = "phase";
     "editor.cursorStyle" = "line-thin";
+    "editor.inlayHints.enabled" = "off";
     "vim.easymotion" = true;
     "githubPullRequests.pullBranch" = "never";
     "vs-kubernetes" = {
