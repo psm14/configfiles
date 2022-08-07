@@ -2,6 +2,8 @@
 let
   inherit (pkgs) stdenv;
   bat-theme = if stdenv.isDarwin then "\$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo gruvbox-dark || echo gruvbox-light)" else "gruvbox-dark";
+  delta-theme = if stdenv.isDarwin then "\$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo --dark || --light)" else "--dark";
+  delta-cmd = "${pkgs.gitAndTools.delta}/bin/delta ${delta-theme}";
 in
 {
   # This value determines the Home Manager release that your
@@ -54,6 +56,38 @@ in
     enable = true;
     enableZshIntegration = true;
     nix-direnv.enable = true;
+  };
+
+  programs.git = {
+    enable = true;
+    userName = "Patrick McLaughlin";
+    userEmail = "me@patmclaughl.in";
+
+    extraConfig = {
+      pull = {
+        ff = "only";
+      };
+      init = {
+        defaultBranch = "master";
+      };
+      core = {
+        pager = delta-cmd;
+      };
+      interactive = {
+        diffFilter = "${delta-cmd} --color-only --features=interactive";
+      };
+      delta = {
+        navigate = "true";
+      };
+      merge = {
+        conflictStyle = "diff3";
+      };
+    };
+
+    ignores = [
+      ".DS_Store"
+      ".direnv"
+    ];
   };
 
   programs.nix-index = {
