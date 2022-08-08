@@ -16,12 +16,24 @@
   };
 
   outputs = { self, nixpkgs, home-manager, darwin, ... }: {
+    homeModules = {
+      shell = ./shellConfig.nix;
+      vscode = ./vscode.nix;
+      gruvbox = ./gruvbox.nix;
+      pywal = ./pywal.nix;
+    };
+
+    darwinModules = {
+      vscode-brew = ./vscode-brew.nix;
+      iterm2 = ./iterm2.nix;
+    };
+
     homeConfigurations = {
       generic = home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs { system = "x86_64-linux"; };
 
         modules = [
-          ./shellConfig.nix
+          self.homeModules.shell
           {
             home.username = "user";
             home.homeDirectory = "/home/user";
@@ -41,8 +53,8 @@
           modules = [
             home-manager.darwinModules.home-manager
             ./configuration.nix
-            ./vscode-brew.nix
-            ./iterm2.nix
+            self.darwinModules.vscode-brew
+            self.darwinModules.iterm2
             {
               # Let old commands use the pinned nixpkgs
               nix.nixPath = {
@@ -54,9 +66,9 @@
               home-manager.useUserPackages = true;
               home-manager.users.pat = {
                 imports = [
-                  ./shellConfig.nix
-                  ./vscode.nix
-                  ./gruvbox.nix
+                  self.homeModules.shell
+                  self.homeModules.vscode
+                  self.homeModules.gruvbox
                 ];
               };
             }
