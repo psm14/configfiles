@@ -41,6 +41,10 @@
             programs.zsh.initExtra = ''
               export NIX_PATH="nixpkgs=${nixpkgs}:$NIX_PATH"
             '';
+            programs.git = {
+              userName = "Patrick McLaughlin";
+              userEmail = "me@patmclaughl.in";
+            };
           }
         ];
       };
@@ -69,6 +73,12 @@
                   self.homeModules.shell
                   self.homeModules.vscode
                   self.homeModules.gruvbox
+                  {
+                    programs.git = {
+                      userName = "Patrick McLaughlin";
+                      userEmail = "me@patmclaughl.in";
+                    };
+                  }
                 ];
               };
             }

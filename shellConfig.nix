@@ -59,8 +59,6 @@ in
 
   programs.git = {
     enable = true;
-    userName = "Patrick McLaughlin";
-    userEmail = "me@patmclaughl.in";
 
     extraConfig = {
       pull = {
