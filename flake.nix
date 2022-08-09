@@ -21,6 +21,7 @@
       vscode = ./vscode.nix;
       gruvbox = ./gruvbox.nix;
       pywal = ./pywal.nix;
+      secretive = ./secretive.nix;
     };
 
     darwinModules = {
@@ -73,6 +74,7 @@
                   self.homeModules.shell
                   self.homeModules.vscode
                   self.homeModules.gruvbox
+                  self.homeModules.secretive
                   {
                     programs.git = {
                       userName = "Patrick McLaughlin";

@@ -38,10 +38,15 @@ in
     ];
   };
 
-  programs.zsh.initExtra = ''
-    if [ "$TERM_PROGRAM" = "iTerm.app" ]; then
-      cat /Users/pat/.cache/wal/sequences
-    fi
-    export BAT_THEME=${bat-theme};
-  '';
+  programs.zsh = {
+    initExtra = ''
+      if [ "$TERM_PROGRAM" = "iTerm.app" ]; then
+        cat /Users/pat/.cache/wal/sequences
+      fi
+    '';
+
+    sessionVariables = {
+      BAT_THEME = bat-theme;
+    };
+  };
 }

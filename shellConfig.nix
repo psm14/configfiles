@@ -43,12 +43,12 @@ in
       theme = "gallois";
     };
 
-    initExtra = ''
-      export DIRENV_LOG_FORMAT=
-      export EDITOR=nvim
-      export PAGER=bat
-      export BAT_STYLE=plain
-    '';
+    sessionVariables = {
+      DIRENV_LOG_FORMAT = "";
+      EDITOR = "${pkgs.neovim}/bin/nvim";
+      PAGER = "${pkgs.bat}/bin/bat";
+      BAT_STYLE = "plain";
+    };
   };
 
   programs.direnv = {

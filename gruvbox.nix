@@ -17,7 +17,7 @@ in
     ];
   };
 
-  programs.zsh.initExtra = ''
-    export BAT_THEME=${bat-theme};
-  '';
+  programs.zsh.sessionVariables = {
+    BAT_THEME = bat-theme;
+  };
 }
