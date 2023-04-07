@@ -52,7 +52,7 @@
     };
 
     darwinConfigurations = {
-      "PatBook-Air" =
+      MacBook =
         darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           modules = [

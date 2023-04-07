@@ -1,8 +1,5 @@
 { lib, pkgs, ... }: {
-  imports = [
-    # For the mouse scaling setting
-    ./darwinExtensions.nix
-  ];
+  imports = [];
 
   config = {
     nixpkgs.config = {
