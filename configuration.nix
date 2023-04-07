@@ -49,7 +49,7 @@
     system.defaults.dock.wvous-tr-corner = 1;
     system.defaults.dock.wvous-bl-corner = 1;
     system.defaults.dock.wvous-br-corner = 1;
-    system.defaults.NSGlobalDomain._HIHideMenuBar = true;
+    system.defaults.NSGlobalDomain._HIHideMenuBar = false;
     system.defaults.finder.AppleShowAllExtensions = true;
     system.defaults.finder.CreateDesktop = false;
 
