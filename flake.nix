@@ -21,7 +21,6 @@
       vscode = ./vscode.nix;
       gruvbox = ./gruvbox.nix;
       pywal = ./pywal.nix;
-      secretive = ./secretive.nix;
     };
 
     darwinModules = {
@@ -74,18 +73,10 @@
                   self.homeModules.shell
                   self.homeModules.vscode
                   self.homeModules.gruvbox
-                  self.homeModules.secretive
                   {
-                    home.file.".ssh/id_secretive.pub".text = "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBE4bbGajkViyqlWeD8lG24Mrn77wrjvH3Wn4uwdiEmMAgLgqy4kTbJuHhRNo8NLmwzkUQiLQ0orNcTuSJRen0nI= me@patmclaughl.in";
-
                     programs.git = {
                       userName = "Patrick McLaughlin";
                       userEmail = "me@patmclaughl.in";
-                      extraConfig = {
-                        user.signingKey = "/Users/pat/.ssh/id_secretive.pub";
-                        gpg.format = "ssh";
-                        commit.gpgsign = "true";
-                      };
                     };
                   }
                 ];
