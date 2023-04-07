@@ -81,6 +81,11 @@ in
       };
     };
 
+    lfs = {
+      enable = true;
+      skipSmudge = true;
+    };
+
     ignores = [
       ".DS_Store"
       ".direnv"
