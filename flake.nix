@@ -69,7 +69,7 @@
 
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.pat = {
+              home-manager.users.user = {
                 imports = [
                   self.homeModules.shell
                   self.homeModules.vscode
