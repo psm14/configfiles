@@ -61,6 +61,7 @@ let
 
         home.activation.copy-settings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
           cp -f "${settings-json}" "${settings-dir}/settings.json"
+          chmod 644 "${settings-dir}/settings.json"
         '';
 
         programs.zsh.shellAliases = {
