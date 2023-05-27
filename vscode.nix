@@ -6,8 +6,6 @@
         "eamodio.gitlens"
         "esbenp.prettier-vscode"
         "GitHub.vscode-pull-request-github"
-        "iocave.customize-ui"
-        "iocave.monkey-patch"
         "jnoortheen.nix-ide"
         "JuanBlanco.solidity"
         "ms-azuretools.vscode-docker"
@@ -21,6 +19,7 @@
         "styled-components.vscode-styled-components"
         "vadimcn.vscode-lldb"
         "vscodevim.vim"
+        "rubymaniac.vscode-direnv"
       ];
       settings = {
         "telemetry.telemetryLevel" = "off";
@@ -129,7 +128,6 @@
         "terminal.integrated.shellIntegration.decorationsEnabled" = "never";
         "extensions.ignoreRecommendations" = true;
         "workbench.statusBar.visible" = false;
-        "foo" = "bar";
       };
     };
   };
