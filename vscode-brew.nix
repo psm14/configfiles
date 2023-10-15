@@ -24,7 +24,7 @@ let
       {
         programs.vscode-brew = {
           extensions = mkOption {
-            type = types.listOf types.string;
+            type = types.listOf types.str;
             default = [ ];
             description = ''
               Extensions to install
@@ -74,8 +74,12 @@ in
   config = {
     homebrew = {
       enable = true;
-      autoUpdate = true;
-      cleanup = "zap";
+
+      onActivation = {
+        autoUpdate = true;
+        cleanup = "zap";
+        upgrade = true;
+      };
 
       taps = [
         "homebrew/bundle"

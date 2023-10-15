@@ -78,6 +78,8 @@
                       userName = "Patrick McLaughlin";
                       userEmail = "me@patmclaughl.in";
                     };
+
+                    home.homeDirectory = nixpkgs.lib.mkForce "/Users/user";
                   }
                 ];
               };

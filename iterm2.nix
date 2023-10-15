@@ -21,8 +21,12 @@ in
   config = {
     homebrew = {
       enable = true;
-      autoUpdate = true;
-      cleanup = "zap";
+
+      onActivation = {
+        autoUpdate = true;
+        cleanup = "zap";
+        upgrade = true;
+      };
 
       taps = [
         "homebrew/bundle"

@@ -23,8 +23,10 @@
 
     nix.package = pkgs.nixUnstable;
 
-    nix.useSandbox = true;
-    nix.sandboxPaths = [ "/private/tmp" "/private/var/tmp" "/usr/bin/env" ];
+    nix.settings = {
+      sandbox = true;
+      extra-sandbox-paths = [ "/private/tmp" "/private/var/tmp" "/usr/bin/env" ];
+    };
 
     nix.extraOptions = ''
       keep-derivations = true
