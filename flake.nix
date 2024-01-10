@@ -26,6 +26,7 @@
     darwinModules = {
       vscode-brew = ./vscode-brew.nix;
       iterm2 = ./iterm2.nix;
+      tabby = ./tabby.nix;
     };
 
     homeConfigurations = {

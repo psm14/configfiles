@@ -43,7 +43,7 @@
     system.defaults.NSGlobalDomain.NSAutomaticQuoteSubstitutionEnabled = false;
     system.defaults.NSGlobalDomain.NSAutomaticSpellingCorrectionEnabled = false;
 
-    system.defaults.".GlobalPreferences"."com.apple.mouse.scaling" = "-1.0";
+    system.defaults.".GlobalPreferences"."com.apple.mouse.scaling" = -1.0;
 
     system.defaults.dock.autohide = true;
     system.defaults.dock.mru-spaces = false;

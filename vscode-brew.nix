@@ -83,9 +83,6 @@ in
 
       taps = [
         "homebrew/bundle"
-        "homebrew/cask"
-        "homebrew/cask-versions"
-        "homebrew/core"
       ];
 
       casks = [
