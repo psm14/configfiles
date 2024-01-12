@@ -60,7 +60,11 @@ let
           lib.hm.dag.entryAfter [ "writeBoundary" ] install-cmd;
 
         home.activation.copy-settings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-          cp -f "${settings-json}" "${settings-dir}/settings.json"
+          if [ -f "${settings-dir}/settings.json" ]; then
+            jq --slurp '.[0] * .[1]' "${settings-dir}/settings.json" "${settings-json}" > "${settings-dir}/settings.json.merged" && mv "${settings-dir}/settings.json.merged" "${settings-dir}/settings.json"
+          else
+            cp -f "${settings-json}" "${settings-dir}/settings.json"
+          fi
           chmod 644 "${settings-dir}/settings.json"
         '';
 

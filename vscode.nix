@@ -7,67 +7,53 @@
         "esbenp.prettier-vscode"
         "GitHub.vscode-pull-request-github"
         "jnoortheen.nix-ide"
-        "JuanBlanco.solidity"
         "ms-azuretools.vscode-docker"
-        "ms-kubernetes-tools.vscode-kubernetes-tools"
         "ms-vscode-remote.remote-containers"
         "ms-vscode-remote.remote-ssh"
         "ms-vscode-remote.remote-ssh-edit"
         "ms-vsliveshare.vsliveshare"
         "redhat.vscode-yaml"
         "rust-lang.rust-analyzer"
-        "styled-components.vscode-styled-components"
-        "vadimcn.vscode-lldb"
         "vscodevim.vim"
         "rubymaniac.vscode-direnv"
+        "yummygum.city-lights-theme"
       ];
       settings = {
-        "telemetry.telemetryLevel" = "off";
-        "redhat.telemetry.enabled" = false;
-        "workbench.fontAliasing" = "auto";
-        "editor.defaultFormatter" = "esbenp.prettier-vscode";
-        "terminal.integrated.cursorStyle" = "underline";
-        "gitlens.codeLens.enabled" = false;
-        "security.workspace.trust.untrustedFiles" = "open";
-        "javascript.format.semicolons" = "insert";
-        "typescript.format.semicolons" = "insert";
-        "javascript.preferences.quoteStyle" = "single";
-        "typescript.preferences.quoteStyle" = "single";
         "[markdown]" = {
+          "editor.quickSuggestions" = {
+            "comments" = "off";
+            "other" = "off";
+            "strings" = "off";
+          };
           "editor.unicodeHighlight.ambiguousCharacters" = false;
           "editor.unicodeHighlight.invisibleCharacters" = false;
           "editor.wordWrap" = "on";
           "editor.wordWrapColumn" = 120;
-          "editor.quickSuggestions" = {
-            "comments" = "off";
-            "strings" = "off";
-            "other" = "off";
-          };
         };
-        "nix.enableLanguageServer" = true;
-        "nix.serverPath" = "${pkgs.rnix-lsp}/bin/rnix-lsp";
-        "nix.formatterPath" = "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt";
         "[nix]" = {
           "editor.defaultFormatter" = "jnoortheen.nix-ide";
         };
-        "editor.tabSize" = 2;
-        "editor.fontFamily" = "Hack, Menlo, Monaco, 'Courier New', monospace";
-        "liveshare.showInStatusBar" = "whileCollaborating";
+        "breadcrumbs.enabled" = false;
         "editor.acceptSuggestionOnCommitCharacter" = false;
-        "terminal.external.osxExec" = "iTerm.app";
-        "editor.rulers" = [ ];
-        "workbench.sideBar.location" = "right";
-        "customizeUI.activityBar" = "bottom";
-        "window.titleBarStyle" = "native";
-        "customizeUI.titleBar" = "inline";
-        "customizeUI.activityBarHideSettings" = true;
-        "customizeUI.statusBarPosition" = "under-panel";
+        "editor.cursorBlinking" = "phase";
+        "editor.cursorStyle" = "line-thin";
+        "editor.defaultFormatter" = "esbenp.prettier-vscode";
+        "editor.folding" = false;
+        "editor.formatOnSave" = true;
+        "editor.fontFamily" = "Hack, Menlo, Monaco, 'Courier New', monospace";
+        "editor.guides.indentation" = false;
+        "editor.inlayHints.enabled" = "off";
         "editor.minimap.enabled" = false;
-        "workbench.startupEditor" = "readme";
+        "editor.padding.bottom" = 12;
+        "editor.padding.top" = 16;
+        "editor.renderLineHighlight" = "gutter";
+        "editor.rulers" = [ ];
+        "editor.tabSize" = 2;
+        "extensions.ignoreRecommendations" = true;
         "git.autofetch" = false;
-        "gitlens.statusBar.enabled" = false;
-        "gitlens.statusBar.pullRequests.enabled" = false;
         "githubIssues.assignWhenWorking" = false;
+        "githubPullRequests.pullBranch" = "never";
+        "gitlens.codeLens.enabled" = false;
         "gitlens.menus" = {
           "editor" = {
             "blame" = false;
@@ -95,12 +81,12 @@
           "scm" = {
             "authors" = false;
           };
-          "scmGroupInline" = {
-            "stash" = false;
-          };
           "scmGroup" = {
             "compare" = false;
             "openClose" = false;
+            "stash" = false;
+          };
+          "scmGroupInline" = {
             "stash" = false;
           };
           "scmItem" = {
@@ -111,23 +97,34 @@
             "stash" = false;
           };
         };
-        "breadcrumbs.enabled" = false;
-        "editor.padding.bottom" = 12;
-        "editor.padding.top" = 16;
-        "editor.folding" = false;
-        "editor.guides.indentation" = false;
-        "editor.renderLineHighlight" = "gutter";
-        "editor.cursorBlinking" = "phase";
-        "editor.cursorStyle" = "line-thin";
-        "editor.inlayHints.enabled" = "off";
+        "gitlens.statusBar.enabled" = false;
+        "gitlens.statusBar.pullRequests.enabled" = false;
+        "liveshare.showInStatusBar" = "whileCollaborating";
+        "nix.enableLanguageServer" = true;
+        "nix.formatterPath" = "/nix/store/25xpcw4nc7wnb4fmd15fxai6wazccny3-nixpkgs-fmt-1.3.0/bin/nixpkgs-fmt";
+        "nix.serverPath" = "/nix/store/qczidp2nmcvc1j78dh1wjj1dk8q0b444-rnix-lsp-unstable-2022-11-27/bin/rnix-lsp";
+        "redhat.telemetry.enabled" = false;
+        "security.workspace.trust.untrustedFiles" = "open";
+        "telemetry.telemetryLevel" = "off";
+        "terminal.external.osxExec" = "iTerm.app";
+        "terminal.integrated.cursorStyle" = "underline";
+        "terminal.integrated.shellIntegration.decorationsEnabled" = "never";
         "vim.easymotion" = true;
-        "githubPullRequests.pullBranch" = "never";
         "vs-kubernetes" = {
           "vs-kubernetes.crd-code-completion" = "disabled";
         };
-        "terminal.integrated.shellIntegration.decorationsEnabled" = "never";
-        "extensions.ignoreRecommendations" = true;
+        "window.autoDetectColorScheme" = true;
+        "window.titleBarStyle" = "custom";
+        "workbench.colorTheme" = "City Lights";
+        "workbench.fontAliasing" = "auto";
+        "workbench.preferredDarkColorTheme" = "City Lights";
+        "workbench.preferredLightColorTheme" = "Gruvbox Light Medium";
+        "workbench.sideBar.location" = "right";
+        "workbench.startupEditor" = "readme";
         "workbench.statusBar.visible" = false;
+        "window.commandCenter" = false;
+        "workbench.layoutControl.enabled" = false;
+        "workbench.activityBar.location" = "top";
       };
     };
   };
