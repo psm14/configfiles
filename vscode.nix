@@ -15,7 +15,7 @@
         "redhat.vscode-yaml"
         "rust-lang.rust-analyzer"
         "vscodevim.vim"
-        "rubymaniac.vscode-direnv"
+        "mkhl.direnv"
         "yummygum.city-lights-theme"
       ];
       settings = {
