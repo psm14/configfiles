@@ -16,7 +16,6 @@
         "rust-lang.rust-analyzer"
         "vscodevim.vim"
         "mkhl.direnv"
-        "yummygum.city-lights-theme"
       ];
       settings = {
         "[markdown]" = {

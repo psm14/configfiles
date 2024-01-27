@@ -19,7 +19,7 @@
     homeModules = {
       shell = ./shellConfig.nix;
       vscode = ./vscode.nix;
-      gruvbox = ./gruvbox.nix;
+      citylights = ./citylights.nix;
       pywal = ./pywal.nix;
     };
 
@@ -73,7 +73,7 @@
                 imports = [
                   self.homeModules.shell
                   self.homeModules.vscode
-                  self.homeModules.gruvbox
+                  self.homeModules.citylights
                   {
                     programs.git = {
                       userName = "Patrick McLaughlin";
