@@ -1,5 +1,5 @@
 { lib, pkgs, ... }: {
-  imports = [];
+  imports = [ ];
 
   config = {
     nixpkgs.config = {

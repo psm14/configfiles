@@ -59,7 +59,7 @@
             home-manager.darwinModules.home-manager
             ./configuration.nix
             self.darwinModules.vscode-brew
-            self.darwinModules.iterm2
+            #self.darwinModules.iterm2
             {
               # Let old commands use the pinned nixpkgs
               nix.nixPath = {
