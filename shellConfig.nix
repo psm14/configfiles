@@ -1,9 +1,7 @@
 { pkgs, ... }:
 let
   inherit (pkgs) stdenv;
-  light-dark = light: dark: if stdenv.isDarwin then "\$(defaults read -globalDomain AppleInterfaceStyle &> /dev/null && echo ${dark} || ${light})" else dark;
-  delta-theme = light-dark "--light" "--dark";
-  delta-cmd = "${pkgs.gitAndTools.delta}/bin/delta ${delta-theme}";
+  delta-cmd = "${pkgs.gitAndTools.delta}/bin/delta";
 in
 {
   # This value determines the Home Manager release that your
