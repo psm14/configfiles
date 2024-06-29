@@ -26,7 +26,7 @@ in
 
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
+    autosuggestion.enable = true;
     enableCompletion = true;
     syntaxHighlighting.enable = true;
 
@@ -47,6 +47,7 @@ in
       EDITOR = "${pkgs.neovim}/bin/nvim";
       PAGER = "${pkgs.bat}/bin/bat";
       BAT_STYLE = "plain";
+      BAT_THEME = "base16-256";
     };
   };
 

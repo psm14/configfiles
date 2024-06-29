@@ -69,7 +69,6 @@
               home-manager.users.user = {
                 imports = [
                   self.homeModules.shell
-                  self.homeModules.citylights
                   {
                     programs.git = {
                       userName = "Patrick McLaughlin";

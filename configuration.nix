@@ -21,7 +21,7 @@
       };
     };
 
-    nix.package = pkgs.nixUnstable;
+    nix.package = pkgs.nixVersions.latest;
 
     nix.settings = {
       sandbox = true;
@@ -58,12 +58,9 @@
     system.keyboard.enableKeyMapping = true;
     system.keyboard.remapCapsLockToControl = true;
 
-    fonts = {
-      fontDir.enable = true;
-      fonts = [
-        pkgs.hack-font
-      ];
-    };
+    fonts.packages = [
+      pkgs.hack-font
+    ];
 
     programs.zsh = {
       enable = true;
