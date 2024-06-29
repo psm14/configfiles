@@ -26,7 +26,6 @@
     darwinModules = {
       vscode-brew = ./vscode-brew.nix;
       iterm2 = ./iterm2.nix;
-      tabby = ./tabby.nix;
     };
 
     homeConfigurations = {
@@ -58,8 +57,6 @@
           modules = [
             home-manager.darwinModules.home-manager
             ./configuration.nix
-            self.darwinModules.vscode-brew
-            #self.darwinModules.iterm2
             {
               # Let old commands use the pinned nixpkgs
               nix.nixPath = {
@@ -72,7 +69,6 @@
               home-manager.users.user = {
                 imports = [
                   self.homeModules.shell
-                  self.homeModules.vscode
                   self.homeModules.citylights
                   {
                     programs.git = {
