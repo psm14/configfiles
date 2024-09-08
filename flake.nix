@@ -22,6 +22,7 @@
               direnv
               starship
               neovim
+              bat
             ];
             phases = ["installPhase"];
             installPhase = ''
@@ -34,6 +35,11 @@
 
               export EDITOR=${pkgs.neovim}/bin/nvim
               alias vim=${pkgs.neovim}/bin/nvim
+
+              export PAGER=${pkgs.bat}/bin/bat
+              export MANPAGER="sh -c 'col -b | ${pkgs.bat}/bin/bat -l man'"
+              export BAT_THEME="base16"
+              alias cat="${pkgs.bat}/bin/bat -pp"
               EOF
 
               mkdir -p $out/home/user/.config
@@ -45,7 +51,6 @@
               cat <<EOF > $out/bin/my-shell
               #!${pkgs.stdenv.shell}
               export ZDOTDIR=$out/home/user
-              cd $out/home/user
               exec zsh
               EOF
               chmod +x $out/bin/my-shell
