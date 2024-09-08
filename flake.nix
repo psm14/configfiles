@@ -9,7 +9,7 @@
     let
       supportedSystems = [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-      starshipToml = builtins.readFile ./starship.toml;
+      #starshipToml = builtins.readFile ./starship.toml;
     in {
       defaultPackage = forAllSystems (system:
         let
@@ -34,7 +34,7 @@
               eval "\$(direnv hook zsh)"
 
               export EDITOR=${pkgs.neovim}/bin/nvim
-              alias vim=${pkgs.neovim}/bin/nvim
+              alias vim="${pkgs.neovim}/bin/nvim -u $out/home/user/.config/nvim/init.vim"
 
               export PAGER=${pkgs.bat}/bin/bat
               export MANPAGER="sh -c 'col -b | ${pkgs.bat}/bin/bat -l man'"
@@ -43,9 +43,8 @@
               EOF
 
               mkdir -p $out/home/user/.config
-              cat <<EOF > $out/home/user/.config/starship.toml
-              ${starshipToml}
-              EOF
+              cp -r ${./starship.toml} $out/home/user/.config/starship.toml
+              cp -r ${./nvim} $out/home/user/.config/nvim
 
               mkdir -p $out/bin
               cat <<EOF > $out/bin/my-shell
