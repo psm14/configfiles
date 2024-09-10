@@ -9,7 +9,6 @@
     let
       supportedSystems = [ "x86_64-linux" "x86_64-darwin" "aarch64-linux" "aarch64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-      #starshipToml = builtins.readFile ./starship.toml;
     in {
       defaultPackage = forAllSystems (system:
         let
