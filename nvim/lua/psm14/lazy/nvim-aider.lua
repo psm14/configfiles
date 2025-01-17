@@ -31,6 +31,14 @@ return {
 	  "--watch-files",
           "--no-gitignore",
         },
+
+        win = {
+          position = "float",
+          -- style = "terminal",
+          -- relative = "editor",
+          width = 0.83,
+          height = 0.83,
+        },
       })
     end,
 }

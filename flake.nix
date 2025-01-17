@@ -29,11 +29,15 @@
               cat <<EOF > $out/home/user/.zshrc
               export HISTFILE=~/.zsh_history
 
-              eval "\$(STARSHIP_CONFIG=$out/home/user/.config starship init zsh)"
+              export XDG_CONFIG_HOME=$out/home/user/.config
+              export XDG_DATA_HOME=~/.local/share/nvim
+              export XDG_STATE_HOME=~/.local/state/nvim
+
+              eval "\$(starship init zsh)"
               eval "\$(direnv hook zsh)"
 
               export EDITOR=${pkgs.neovim}/bin/nvim
-              alias vim="${pkgs.neovim}/bin/nvim -u $out/home/user/.config/nvim/init.vim"
+              alias vim="${pkgs.neovim}/bin/nvim"
 
               export PAGER=${pkgs.bat}/bin/bat
               export MANPAGER="sh -c 'col -b | ${pkgs.bat}/bin/bat -l man'"
