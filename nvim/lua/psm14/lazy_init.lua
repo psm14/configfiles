@@ -13,5 +13,6 @@ vim.opt.rtp:prepend(lazypath)
  
 require("lazy").setup({
     spec = "psm14.lazy",
-    change_detection = { notify = false }
+    change_detection = { notify = false },
+    lockfile = vim.fn.stdpath("data") .. "/lazy-lock.json", -- move lockfile to XDG_DATA_HOME because nix store is readonly
 })
