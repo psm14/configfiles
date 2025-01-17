@@ -30,10 +30,10 @@
               export HISTFILE=~/.zsh_history
 
               export XDG_CONFIG_HOME=$out/home/user/.config
-              export XDG_DATA_HOME=$HOME/.local/share/nvim
-              export XDG_STATE_HOME=$HOME/.local/state/nvim
+              export XDG_DATA_HOME=~/.local/share/nvim
+              export XDG_STATE_HOME=~/.local/state/nvim
 
-              export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship.toml
+              export STARSHIP_CONFIG=$out/home/user/.config/starship.toml
               eval "\$(starship init zsh)"
               eval "\$(direnv hook zsh)"
 
