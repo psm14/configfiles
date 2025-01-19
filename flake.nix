@@ -22,6 +22,7 @@
               starship
               neovim
               bat
+              lsd
             ];
             phases = ["installPhase"];
             installPhase = ''
@@ -42,9 +43,14 @@
 
               export PAGER=${pkgs.bat}/bin/bat
               export MANPAGER="sh -c 'col -b | ${pkgs.bat}/bin/bat -l man'"
-              export BAT_THEME="base16"
+              export BAT_THEME="ansi"
+
               alias cat="${pkgs.bat}/bin/bat -pp"
+              alias ls="${pkgs.lsd}/bin/lsd"
+
+              export PATH=${pkgs.direnv}/bin:${pkgs.bat}/bin:${pkgs.neovim}/bin:${pkgs.lsd}/bin:\$PATH
               EOF
+
 
               mkdir -p $out/home/user/.config
               cp -r ${./starship.toml} $out/home/user/.config/starship.toml

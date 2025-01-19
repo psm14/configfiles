@@ -32,80 +32,12 @@ end
 vim.keymap.set('n', '<D-j>', _G.toggle_term, { desc = 'Toggle terminal' })
 vim.keymap.set('t', '<D-j>', '<C-\\><C-n>:lua toggle_term()<CR>', { desc = 'Toggle terminal' })
 
--- Toggleterm-aider
-
--- Create aider terminal instance
-local aider = Terminal:new({
-  cmd = "aider --no-pretty --no-auto-commit --no-gitignore --watch-files",
-  hidden = true,
-  direction = "float",
+-- Initialize aider-nvim plugin
+require('aider-nvim').setup({
+  toggle_key = '<D-k>',
+  add_key = '<leader>aa',
+  drop_key = '<leader>ad',
 })
-
--- Function to get current file path
-local function get_current_file()
-  return vim.fn.expand('%:p')
-end
-
--- Function to add current file to aider
-function _G.aider_add_file()
-  local file = get_current_file()
-  aider:send('/add ' .. file)
-end
-
--- Function to drop current file from aider
-function _G.aider_drop_file()
-  local file = get_current_file()
-  aider:send('/drop ' .. file)
-end
-
--- Function to add file from nvim-tree
-function _G.aider_add_tree_file()
-  local node = require('nvim-tree.api').tree.get_node_under_cursor()
-  if node then
-    aider:send('/add ' .. node.absolute_path)
-  end
-end
-
--- Function to drop file from nvim-tree
-function _G.aider_drop_tree_file()
-  local node = require('nvim-tree.api').tree.get_node_under_cursor()
-  if node then
-    aider:send('/drop ' .. node.absolute_path)
-  end
-end
-
--- Aider terminal toggle
-function _G.aider_toggle()
-  aider:toggle()
-  if aider:is_open() then
-    vim.schedule(function()
-      vim.cmd('startinsert')
-    end)
-  end
-end
-
--- Function to handle aider file operations based on context
-function _G.aider_smart_add()
-  if vim.bo.filetype == 'NvimTree' then
-    _G.aider_add_tree_file()
-  else
-    _G.aider_add_file()
-  end
-end
-
-function _G.aider_smart_drop()
-  if vim.bo.filetype == 'NvimTree' then
-    _G.aider_drop_tree_file()
-  else
-    _G.aider_drop_file()
-  end
-end
-
--- Keymaps for aider
-vim.keymap.set('n', '<D-k>', _G.aider_toggle, { desc = 'Toggle Aider terminal' })
-vim.keymap.set('t', '<D-k>', '<C-\\><C-n>:lua aider_toggle()<CR>', { desc = 'Toggle Aider terminal' })
-vim.keymap.set('n', '<leader>aa', _G.aider_smart_add, { desc = 'Add file to Aider' })
-vim.keymap.set('n', '<leader>ad', _G.aider_smart_drop, { desc = 'Drop file from Aider' })
 
 -- Telescope
 local builtin = require('telescope.builtin')
