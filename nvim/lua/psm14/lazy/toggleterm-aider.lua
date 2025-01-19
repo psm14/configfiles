@@ -1,9 +1,8 @@
 return {
-  'psm14/aider-nvim',
+  'psm14/toggleterm-aider',
   dependencies = {
     'akinsho/toggleterm.nvim',
     'nvim-tree/nvim-tree.lua'
   },
   config = true,
-  dev = true
 }
