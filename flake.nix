@@ -23,6 +23,7 @@
               neovim
               bat
               lsd
+              aider-chat
             ];
             phases = ["installPhase"];
             installPhase = ''
@@ -48,7 +49,7 @@
               alias cat="${pkgs.bat}/bin/bat -pp"
               alias ls="${pkgs.lsd}/bin/lsd"
 
-              export PATH=${pkgs.direnv}/bin:${pkgs.bat}/bin:${pkgs.neovim}/bin:${pkgs.lsd}/bin:\$PATH
+              export PATH=${pkgs.direnv}/bin:${pkgs.bat}/bin:${pkgs.neovim}/bin:${pkgs.lsd}/bin:${pkgs.aider-chat}/bin:\$PATH
               EOF
 
 
