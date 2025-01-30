@@ -6,7 +6,7 @@ vim.opt.shiftwidth = 2
 vim.opt.number = true
 vim.opt.laststatus = 3
 
-vim.g.mapleader = " " -- Set leader key before Lazy
+vim.g.mapleader = "\\" -- Set leader key before Lazy
  
 require("psm14.lazy_init")
 
