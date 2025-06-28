@@ -32,12 +32,6 @@ end
 vim.keymap.set('n', '<D-j>', _G.toggle_term, { desc = 'Toggle terminal' })
 vim.keymap.set('t', '<D-j>', '<C-\\><C-n>:lua toggle_term()<CR>', { desc = 'Toggle terminal' })
 
-require('toggleterm-aider').setup({
-  toggle_key = '<D-k>',
-  add_key = '<leader>aa',
-  drop_key = '<leader>ad',
-})
-
 -- Telescope
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
