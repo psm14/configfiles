@@ -19,18 +19,41 @@ vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', { desc = 'Move to right window' })
 -- Toggleterm
 local Terminal = require('toggleterm.terminal').Terminal
 local default_term = Terminal:new({})
+local codex_path = vim.fn.exepath('codex')
+local codex_term = codex_path ~= '' and Terminal:new({
+  cmd = codex_path .. ' --yolo',
+  hidden = true,
+}) or nil
 
-function _G.toggle_term()
-  default_term:toggle()
-  if default_term:is_open() then
+local function toggle_terminal(term)
+  term:toggle()
+  if term:is_open() then
     vim.schedule(function()
       vim.cmd('startinsert')
     end)
   end
 end
 
+function _G.toggle_term()
+  toggle_terminal(default_term)
+end
+
+function _G.toggle_codex_term()
+  if not codex_term then
+    vim.notify('codex executable not found in PATH', vim.log.levels.ERROR)
+    return
+  end
+
+  toggle_terminal(codex_term)
+end
+
 vim.keymap.set('n', '<D-j>', _G.toggle_term, { desc = 'Toggle terminal' })
 vim.keymap.set('t', '<D-j>', '<C-\\><C-n>:lua toggle_term()<CR>', { desc = 'Toggle terminal' })
+vim.keymap.set('n', '<D-k>', _G.toggle_codex_term, { desc = 'Toggle Codex terminal' })
+vim.keymap.set('t', '<D-k>', '<C-\\><C-n>:lua toggle_codex_term()<CR>', { desc = 'Toggle Codex terminal' })
+vim.keymap.set('n', '<leader>cc', _G.toggle_codex_term, { desc = 'Toggle Codex terminal' })
+vim.keymap.set('t', '<leader>cc', '<C-\\><C-n>:lua toggle_codex_term()<CR>', { desc = 'Toggle Codex terminal' })
+vim.api.nvim_create_user_command('Codex', _G.toggle_codex_term, { desc = 'Toggle Codex terminal' })
 
 -- Telescope
 local builtin = require('telescope.builtin')
@@ -50,4 +73,3 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGai
   command = "if mode() != 'c' | checktime | endif",
   pattern = { "*" },
 })
-
